@@ -1,0 +1,38 @@
+数据库
+ReidAttention.db
+users表
+
+CREATE TABLE users(
+    id INT PRIMARY KEY,        -- 用户ID
+    emp_id INT,                -- 员工ID
+    username VARCHAR(50),         -- 用户名
+    password VARCHAR(50),     -- 密码
+    permission ENUM('普通用户','考勤管理员','系统管理员') -- 权限类型
+);
+
+CREATE TABLE employees(
+    id INT PRIMARY KEY,    -- 员工ID
+    name VARCHAR(50)      -- 姓名
+);
+
+CREATE TABLE attendance_inputs(
+    id INT PRIMARY KEY,
+    input_time DATETIME,
+    photo_url VARCHAR(255),
+    recognitions VARCHAR(255)
+);
+
+CREATE TABLE  recognition_results(
+    id INT PRIMARY KEY,
+    input_id INT,
+    recognition_type VARCHAR(50),     -- 识别方法
+    emp_id INT,
+    success BOOLEAN
+);
+
+CREATE TABLE  attendance_results(
+    id INT PRIMARY KEY,
+    atime,DATETIME
+    recognition_type VARCHAR(50),     -- 识别方法
+    emp_id INT,
+);
